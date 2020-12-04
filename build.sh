@@ -1,3 +1,7 @@
+#! /usr/bin/env bash
+
+set -ex
+
 cat \
 	source/game.js \
 	source/random.js \
@@ -30,7 +34,7 @@ node shrinkit.js build/underrun.js > build/underrun.compact.js
 	-o build/underrun.min.js
 
 
-rm build/underrun.zip
+rm -rf build/underrun.zip
 
 sed -e '/GAME_SOURCE/{r build/underrun.min.js' -e 'd}' source/html-template.html > underrun.html
 zip -9 build/underrun.zip m/q2.png m/l1.png m/l2.png m/l3.png underrun.html
